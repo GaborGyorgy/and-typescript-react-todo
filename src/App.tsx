@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactElement } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AppBar, Link as NavLink, Typography } from "@material-ui/core";
 
-function App() {
+import TodoJS from "./components/js/TodoJS/TodoJS";
+import TodoTS from "./components/ts/TodoTS/TodoTS";
+import PageNotFound from "./components/js/PageNotFound/PageNotFound";
+import "./App.css";
+
+function App(): ReactElement {
   return (
-    <div className="App">
+    <Router>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link className="App-link" to="/">
+          JS
+        </Link>
+        <Link className="App-link" to="/ts">
+          TS
+        </Link>
       </header>
-    </div>
+      <Switch>
+        <Route path="/" exact component={TodoJS} />
+        <Route path="/ts" component={TodoTS} />
+        <Route component={PageNotFound} />
+      </Switch>
+    </Router>
   );
 }
 
