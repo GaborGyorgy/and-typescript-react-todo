@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { AppBar, Link as NavLink, Typography } from "@material-ui/core";
 
 import TodoJS from "./components/js/TodoJS/TodoJS";
 import TodoTS from "./components/ts/TodoTS/TodoTS";
