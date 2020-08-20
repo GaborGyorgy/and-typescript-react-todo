@@ -1,0 +1,10 @@
+.add-task-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-self: center;
+}
+
+.add-task-button {
+  margin-top: 16px !important;
+}
