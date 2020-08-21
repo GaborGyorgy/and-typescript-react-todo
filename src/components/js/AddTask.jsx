@@ -13,6 +13,7 @@ const AddTask = ({ addTaskHandler }) => {
     if (task) {
       setHasError(false);
       addTaskHandler(task);
+      setTask("");
     } else {
       setHasError(true);
     }
@@ -21,7 +22,7 @@ const AddTask = ({ addTaskHandler }) => {
   return (
     <div className="add-task-wrapper">
       <h5>Add something to the list</h5>
-      <Input placeholder="Task" onChange={(e) => setTask(e.target.value)} />
+      <Input placeholder="Task" onChange={(e) => setTask(e.target.value)} value={task} />
       <Button
         className="add-task-button"
         variant="contained"
