@@ -20,39 +20,41 @@ const TodoJS = ({ headerText, noTaskText }) => {
   const [taskToDeleteIndex, setTaskToDeleteIndex] = useState(null);
 
   useEffect(() => {
-    const savedTasks = getLocalStorageItem(LOCAL_STORAGE_KEY, []);
-    setTasks(savedTasks);
+    (async () => {
+      const savedTasks = await getLocalStorageItem(LOCAL_STORAGE_KEY, []);
+      setTasks(savedTasks);
+    })();
   }, []);
 
-  const addTaskHandler = (task) => {
+  const addTaskHandler = async (task) => {
     const tasksCopy = [...tasks];
     tasksCopy.push({ label: task, isComplete: false });
 
     setTasks(tasksCopy);
-    setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
+    await setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
   };
 
   const deleteTaskHandler = (index) => {
     setTaskToDeleteIndex(index);
   };
 
-  const deleteConfirmedHandler = () => {
+  const deleteConfirmedHandler = async () => {
     const tasksCopy = [...tasks];
     tasksCopy.splice(taskToDeleteIndex, 1);
     setTaskToDeleteIndex(null);
     setTasks(tasksCopy);
-    setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
+    await setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
   };
 
   const deleteCancelledHandler = () => {
     setTaskToDeleteIndex(null);
   };
 
-  const taskCheckedHandler = (index) => {
+  const taskCheckedHandler = async (index) => {
     const tasksCopy = [...tasks];
-    tasksCopy[index].isComplete = true;
+    tasksCopy[index].isComplete = !tasksCopy[index].isComplete;
     setTasks(tasksCopy);
-    setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
+    await setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
   };
 
   return (
