@@ -1,0 +1,23 @@
+.delete-task-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-task-modal-fade {
+  padding: 16px;
+  background-color: #282c34;
+  color: #fff;
+}
+
+.delete-task-modal-header {
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 16px;
+  margin-top: 0;
+}
+
+.delete-task-modal-button-container {
+  display: flex;
+  justify-content: space-between;
+}
