@@ -48,12 +48,23 @@ const TodoJS = ({ headerText, noTaskText }) => {
     setTaskToDeleteIndex(null);
   };
 
+  const taskCheckedHandler = (index) => {
+    const tasksCopy = [...tasks];
+    tasksCopy[index].isComplete = true;
+    setTasks(tasksCopy);
+    setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
+  };
+
   return (
     <div className="container">
       <h3 className="title">{headerText}</h3>
       <AddTask addTaskHandler={addTaskHandler} />
       {tasks.length ? (
-        <TaskList tasks={tasks} deleteTaskHandler={deleteTaskHandler} />
+        <TaskList
+          tasks={tasks}
+          deleteTaskHandler={deleteTaskHandler}
+          taskCheckedHandler={taskCheckedHandler}
+        />
       ) : (
         <div>{noTaskText}</div>
       )}
