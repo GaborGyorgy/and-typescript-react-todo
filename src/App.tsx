@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import TodoJS from "./components/js/TodoJS/TodoJS";
+import TodoJS from "./components/js/TodoJS";
 import TodoTS from "./components/ts/TodoTS/TodoTS";
-import PageNotFound from "./components/js/PageNotFound/PageNotFound";
+import PageNotFound from "./components/js/PageNotFound";
 import "./App.css";
 
 function App(): ReactElement {
@@ -18,7 +18,16 @@ function App(): ReactElement {
         </Link>
       </header>
       <Switch>
-        <Route path="/" exact component={TodoJS} />
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <TodoJS
+              noTaskText="You have no tasks added."
+              headerText="Todo JSX example."
+            />
+          )}
+        />
         <Route path="/ts" component={TodoTS} />
         <Route component={PageNotFound} />
       </Switch>
