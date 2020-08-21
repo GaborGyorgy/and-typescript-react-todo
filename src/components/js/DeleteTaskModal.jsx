@@ -8,7 +8,11 @@ const DeleteTaskModal = ({
   isOpen,
 }) => {
   return (
-    <Modal open={isOpen} className="delete-task-modal">
+    <Modal
+      open={isOpen}
+      className="delete-task-modal"
+      data-testid="delete-modal"
+    >
       <Fade in={isOpen} className="delete-task-modal-fade">
         <div>
           <h3 className="delete-task-modal-header">Deletion confirmation.</h3>
@@ -23,6 +27,7 @@ const DeleteTaskModal = ({
               No
             </Button>
             <Button
+              inputProps={{ "data-testid": "delete-task-button" }}
               variant="contained"
               size="medium"
               color="primary"

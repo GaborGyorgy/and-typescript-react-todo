@@ -22,8 +22,14 @@ const AddTask = ({ addTaskHandler }) => {
   return (
     <div className="add-task-wrapper">
       <h5>Add something to the list</h5>
-      <Input placeholder="Task" onChange={(e) => setTask(e.target.value)} value={task} />
+      <Input
+        inputProps={{ "data-testid": "add-task-input" }}
+        placeholder="Task"
+        onChange={(e) => setTask(e.target.value)}
+        value={task}
+      />
       <Button
+        inputProps={{ "data-testid": "add-task-button" }}
         className="add-task-button"
         variant="contained"
         color="primary"

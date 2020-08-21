@@ -16,17 +16,25 @@ const TaskList = ({ tasks, deleteTaskHandler, taskCheckedHandler }) => {
     <List>
       {tasks.map((task, index) => {
         return (
-          <ListItem key={`${task.label}_${index}`} dense>
+          <ListItem
+            data-testid="task-list-item"
+            key={`${task.label}_${index}`}
+            dense
+          >
             <ListItemIcon>
               <Checkbox
                 edge="start"
                 color="primary"
                 checked={task.isComplete}
                 onClick={() => taskCheckedHandler(index)}
+                inputProps={{ "data-testid": "check-task-button" }}
               />
             </ListItemIcon>
-            <ListItemText primary={task.label} />
-            <ListItemSecondaryAction onClick={() => deleteTaskHandler(index)}>
+            <ListItemText primary={task.label} data-testid="task-item-label" />
+            <ListItemSecondaryAction
+              data-testid="task-item-delete-button"
+              onClick={() => deleteTaskHandler(index)}
+            >
               <IconButton edge="end" aria-label="delete">
                 <DeleteIcon />
               </IconButton>
