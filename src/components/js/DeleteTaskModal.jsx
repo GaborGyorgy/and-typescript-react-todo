@@ -27,7 +27,7 @@ const DeleteTaskModal = ({
               No
             </Button>
             <Button
-              inputProps={{ "data-testid": "delete-task-button" }}
+              data-testid="delete-task-button"
               variant="contained"
               size="medium"
               color="primary"

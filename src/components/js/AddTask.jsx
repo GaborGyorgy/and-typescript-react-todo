@@ -29,7 +29,7 @@ const AddTask = ({ addTaskHandler }) => {
         value={task}
       />
       <Button
-        inputProps={{ "data-testid": "add-task-button" }}
+        data-testid="add-task-button"
         className="add-task-button"
         variant="contained"
         color="primary"
