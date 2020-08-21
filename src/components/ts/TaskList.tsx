@@ -15,6 +15,7 @@ import { ITaskListProps } from "./interfaces";
 const TaskList = ({
   tasks,
   deleteTaskHandler,
+  taskCheckedHandler,
 }: ITaskListProps): ReactElement => {
   return (
     <List>
@@ -29,8 +30,10 @@ const TaskList = ({
               <Checkbox
                 edge="start"
                 color="primary"
+                checked={task.isComplete}
                 //@ts-ignore <- currently TS only supports native attributes and "data-testid" is not one of them, hence the ignore
                 inputProps={{ "data-testid": "check-task-button" }}
+                onClick={() => taskCheckedHandler(index)}
               />
             </ListItemIcon>
             <ListItemText primary={task.label} data-testid="task-item-label" />

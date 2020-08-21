@@ -53,6 +53,13 @@ const TodoTS = ({ headerText, noTaskText }: ITodoTSProps): ReactElement => {
     setTaskToDeleteIndex(null);
   };
 
+  const taskCheckedHandler = async (index: number): Promise<void> => {
+    const tasksCopy = [...tasks];
+    tasksCopy[index].isComplete = !tasksCopy[index].isComplete;
+    setTasks(tasksCopy);
+    await setLocalStorageItem(LOCAL_STORAGE_KEY, tasksCopy);
+  };
+
   return (
     <div className="container">
       <h3 className="title">{headerText}</h3>
@@ -61,6 +68,7 @@ const TodoTS = ({ headerText, noTaskText }: ITodoTSProps): ReactElement => {
         <TaskList
           tasks={tasks}
           deleteTaskHandler={deleteTaskHandler}
+          taskCheckedHandler={taskCheckedHandler}
         />
       ) : (
         <div>{noTaskText}</div>
