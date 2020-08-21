@@ -11,14 +11,19 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const TaskList = ({ tasks, deleteTaskHandler }) => {
+const TaskList = ({ tasks, deleteTaskHandler, taskCheckedHandler }) => {
   return (
     <List>
       {tasks.map((task, index) => {
         return (
           <ListItem key={`${task.label}_${index}`} dense>
             <ListItemIcon>
-              <Checkbox edge="start" checked={task.isComplete} />
+              <Checkbox
+                edge="start"
+                color="primary"
+                checked={task.isComplete}
+                onClick={() => taskCheckedHandler(index)}
+              />
             </ListItemIcon>
             <ListItemText primary={task.label} />
             <ListItemSecondaryAction onClick={() => deleteTaskHandler(index)}>
@@ -41,6 +46,7 @@ TaskList.propTypes = {
     })
   ),
   deleteTaskHandler: PropTypes.func.isRequired,
+  taskCheckedHandler: PropTypes.func.isRequired,
 };
 
 export default TaskList;
