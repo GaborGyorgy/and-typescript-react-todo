@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Fade, Button } from "@material-ui/core";
+import PropTypes from "prop-types";
 import "../css/DeleteTaskModal.css";
 
 const DeleteTaskModal = ({
@@ -40,6 +41,12 @@ const DeleteTaskModal = ({
       </Fade>
     </Modal>
   );
+};
+
+DeleteTaskModal.propTypes = {
+  deleteConfirmedHandler: PropTypes.func.isRequired,
+  deleteCancelledHandler: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
 };
 
 export default DeleteTaskModal;
