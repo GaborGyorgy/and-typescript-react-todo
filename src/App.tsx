@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import TodoJS from "./components/js/TodoJS";
-import TodoTS from "./components/ts/TodoTS/TodoTS";
+import TodoTS from "./components/ts/TodoTS";
 import PageNotFound from "./components/js/PageNotFound";
 import "./App.css";
 
@@ -28,7 +28,15 @@ function App(): ReactElement {
             />
           )}
         />
-        <Route path="/ts" component={TodoTS} />
+        <Route
+          path="/ts"
+          render={() => (
+            <TodoTS
+              noTaskText="You have no tasks added."
+              headerText="Todo TSX example."
+            />
+          )}
+        />
         <Route component={PageNotFound} />
       </Switch>
     </Router>
