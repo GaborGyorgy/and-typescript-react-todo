@@ -12,7 +12,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 import { ITaskListProps } from "./interfaces";
 
-const TaskList = ({ tasks }: ITaskListProps): ReactElement => {
+const TaskList = ({
+  tasks,
+  deleteTaskHandler,
+}: ITaskListProps): ReactElement => {
   return (
     <List>
       {tasks.map((task, index) => {
@@ -31,7 +34,10 @@ const TaskList = ({ tasks }: ITaskListProps): ReactElement => {
               />
             </ListItemIcon>
             <ListItemText primary={task.label} data-testid="task-item-label" />
-            <ListItemSecondaryAction data-testid="task-item-delete-button">
+            <ListItemSecondaryAction
+              data-testid="task-item-delete-button"
+              onClick={() => deleteTaskHandler(index)}
+            >
               <IconButton edge="end" aria-label="delete">
                 <DeleteIcon />
               </IconButton>
