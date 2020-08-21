@@ -2,6 +2,7 @@ import React, { useEffect, useState, ReactElement } from "react";
 
 import "../css/Todo.css";
 import AddTask from "./AddTask";
+import TaskList from "./TaskList";
 import { getLocalStorageItem, setLocalStorageItem } from "./localStorageHelper";
 
 import { ITask, ITodoTSProps } from "./interfaces";
@@ -33,7 +34,7 @@ const TodoTS = ({ headerText, noTaskText }: ITodoTSProps): ReactElement => {
     <div className="container">
       <h3 className="title">{headerText}</h3>
       <AddTask addTaskHandler={addTaskHandler} />
-      <div>{noTaskText}</div>
+      {tasks.length ? <TaskList tasks={tasks} /> : <div>{noTaskText}</div>}
     </div>
   );
 };
